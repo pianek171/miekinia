@@ -1,0 +1,23 @@
+<script>
+  const params = new URLSearchParams(window.location.hash.slice(1));
+  const accessToken = params.get("access_token");
+  const refreshToken = params.get("refresh_token");
+  const type = params.get("type");
+
+  if (accessToken && refreshToken && type) {
+    window.history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
+
+    fetch("/api/auth/complete-email", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ accessToken, refreshToken, type }),
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error("Unable to complete email authentication");
+        window.location.replace(type === "invite" || type === "recovery" ? "/auth/set-password" : "/dashboard");
+      })
+      .catch(() => {
+        window.location.replace("/auth/signin?error=Invalid%20or%20expired%20authentication%20link");
+      });
+  }
+</script>
