@@ -223,8 +223,8 @@ Apply the migration before deploying the editor. The seeded `.invalid` addresses
 - [x] 3.1 Lint passes for smoke coverage
 - [x] 3.2 Astro type check passes for smoke coverage
 - [x] 3.3 Production build passes for smoke coverage
-- [ ] 3.4 Local-Supabase production-preview smoke scenario passes
+- [x] 3.4 Local-Supabase production-preview smoke scenario passes
 
 #### Manual
 
-- [ ] 3.5 Verify local-only smoke credentials are not printed
+- [x] 3.5 Verify local-only smoke credentials are not printed
