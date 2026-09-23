@@ -195,21 +195,21 @@ Apply the migration before deploying the editor. The seeded `.invalid` addresses
 
 #### Automated
 
-- [x] 1.1 Migration reset succeeds with two seeded templates
-- [x] 1.2 Lint passes for shared template contract
-- [x] 1.3 Astro type check passes for shared template contract
+- [x] 1.1 Migration reset succeeds with two seeded templates — eb44151
+- [x] 1.2 Lint passes for shared template contract — eb44151
+- [x] 1.3 Astro type check passes for shared template contract — eb44151
 
 #### Manual
 
-- [x] 1.4 Verify seeded records, tokens, and anonymous RLS denial
+- [x] 1.4 Verify seeded records, tokens, and anonymous RLS denial — eb44151
 
 ### Phase 2: Authenticated Dashboard Editor
 
 #### Automated
 
-- [ ] 2.1 Lint passes for editor and save API
-- [ ] 2.2 Astro type check passes for editor and save API
-- [ ] 2.3 Production build passes for editor and save API
+- [x] 2.1 Lint passes for editor and save API
+- [x] 2.2 Astro type check passes for editor and save API
+- [x] 2.3 Production build passes for editor and save API
 
 #### Manual
 

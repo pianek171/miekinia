@@ -1,27 +1,52 @@
 ---
+import TemplateEditor from "@/components/report-templates/TemplateEditor";
 import Layout from "@/layouts/Layout.astro";
+import { loadReportTemplates } from "@/lib/report-templates";
+import { createClient } from "@/lib/supabase";
 
 const { user } = Astro.locals;
+const supabase = createClient(Astro.request.headers, Astro.cookies);
+let templates = null;
+let loadError: string | null = null;
+
+if (!supabase) {
+  loadError = "Supabase is not configured.";
+} else {
+  try {
+    templates = await loadReportTemplates(supabase);
+  } catch {
+    loadError = "Templates are unavailable. Check the database configuration and try again.";
+  }
+}
 ---
 
-<Layout title="Dashboard">
-  <div class="bg-cosmic flex min-h-screen items-center justify-center p-4">
-    <div class="rounded-2xl border border-white/10 bg-white/10 p-8 text-center text-white backdrop-blur-xl">
-      <h1 class="mb-4 bg-gradient-to-r from-blue-200 to-purple-200 bg-clip-text text-3xl font-bold text-transparent">
-        Dashboard
-      </h1>
-      <p class="text-blue-100/80">
-        Welcome, <span class="font-semibold text-white">{user?.email}</span>
-      </p>
-      <p class="mt-2 text-sm text-blue-100/50">This page is only for authenticated users.</p>
-      <form method="POST" action="/api/auth/signout" class="mt-6">
-        <button
-          type="submit"
-          class="rounded-lg border border-white/20 bg-white/10 px-4 py-2 text-sm transition-colors hover:bg-white/20"
-        >
-          Sign out
-        </button>
-      </form>
-    </div>
+<Layout title="Report templates">
+  <div class="bg-cosmic min-h-screen p-4 sm:p-8">
+    <main class="mx-auto max-w-6xl">
+      <header class="mb-8 flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/10 p-5 text-white backdrop-blur-xl sm:flex-row sm:items-center sm:justify-between sm:p-6">
+        <div>
+          <h1 class="bg-gradient-to-r from-blue-200 to-purple-200 bg-clip-text text-3xl font-bold text-transparent">
+            Report templates
+          </h1>
+          <p class="mt-1 text-sm text-blue-100/70">Signed in as {user?.email}</p>
+        </div>
+        <form method="POST" action="/api/auth/signout">
+          <button
+            type="submit"
+            class="rounded-lg border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium transition-colors hover:bg-white/20"
+          >
+            Sign out
+          </button>
+        </form>
+      </header>
+
+      {templates ? (
+        <TemplateEditor client:load templates={templates} />
+      ) : (
+        <p class="rounded-xl border border-red-200/30 bg-red-950/40 p-4 text-red-100" role="alert">
+          {loadError}
+        </p>
+      )}
+    </main>
   </div>
 </Layout>
