@@ -213,8 +213,8 @@ Apply the migration before deploying the editor. The seeded `.invalid` addresses
 
 #### Manual
 
-- [ ] 2.4 Verify independent persisted edits and access boundaries
-- [ ] 2.5 Verify validation, mobile usability, and token guidance
+- [x] 2.4 Verify independent persisted edits and access boundaries
+- [x] 2.5 Verify validation, mobile usability, and token guidance
 
 ### Phase 3: Runtime Smoke Coverage
 
