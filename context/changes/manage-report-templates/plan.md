@@ -207,9 +207,9 @@ Apply the migration before deploying the editor. The seeded `.invalid` addresses
 
 #### Automated
 
-- [x] 2.1 Lint passes for editor and save API
-- [x] 2.2 Astro type check passes for editor and save API
-- [x] 2.3 Production build passes for editor and save API
+- [x] 2.1 Lint passes for editor and save API — ac84096
+- [x] 2.2 Astro type check passes for editor and save API — ac84096
+- [x] 2.3 Production build passes for editor and save API — ac84096
 
 #### Manual
 
@@ -220,9 +220,9 @@ Apply the migration before deploying the editor. The seeded `.invalid` addresses
 
 #### Automated
 
-- [ ] 3.1 Lint passes for smoke coverage
-- [ ] 3.2 Astro type check passes for smoke coverage
-- [ ] 3.3 Production build passes for smoke coverage
+- [x] 3.1 Lint passes for smoke coverage
+- [x] 3.2 Astro type check passes for smoke coverage
+- [x] 3.3 Production build passes for smoke coverage
 - [ ] 3.4 Local-Supabase production-preview smoke scenario passes
 
 #### Manual
